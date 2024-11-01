@@ -9,7 +9,8 @@
             "type": "integer"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "format":"email"
           },
           "first_name": {
             "type": "string"
