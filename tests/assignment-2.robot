@@ -7,22 +7,22 @@ Suite Teardown    I log out of the application
 ${BASE_URL}       https://www.saucedemo.com/
 ${BROWSER}        Chrome
 
-${LOGIN_USERNAME_SELECTOR}      id:user-name
-${LOGIN_PASSWORD_SELECTOR}      id:password
-${LOGIN_BUTTON_SELECTOR}        id:login-button
-${PRODUCTS_TITLE_SELECTOR}      data:test:title
-${CART_ICON_SELECTOR}           data:test:shopping-cart-link
-${CHECKOUT_BUTTON_SELECTOR}     data:test:checkout
-${FIRST_NAME_SELECTOR}          data:test:firstName
-${LAST_NAME_SELECTOR}           data:test:lastName
-${POSTAL_CODE_SELECTOR}         data:test:postalCode
-${CONTINUE_BUTTON_SELECTOR}     data:test:continue
-${FINISH_BUTTON_SELECTOR}       data:test:finish
+${LOGIN_USERNAME_FIELD}         id:user-name
+${LOGIN_PASSWORD_FIELD}         id:password
+${LOGIN_BUTTON}                 id:login-button
+${PRODUCTS_TITLE}               data:test:title
+${CART_ICON}                    data:test:shopping-cart-link
+${CHECKOUT_BUTTON}              data:test:checkout
+${FIRST_NAME_FIELD}             data:test:firstName
+${LAST_NAME_FIELD}              data:test:lastName
+${POSTAL_CODE_FIELD}            data:test:postalCode
+${CONTINUE_BUTTON}              data:test:continue
+${FINISH_BUTTON}                data:test:finish
 ${ORDER_COMPLETE_HEADER}        data:test:complete-header
 ${ORDER_COMPLETE_TEXT}          data:test:complete-text
 ${BACK_TO_PRODUCTS_BUTTON}      data:test:back-to-products
-${MENU_BUTTON_SELECTOR}         class:bm-burger-button
-${LOGOUT_BUTTON_SELECTOR}       data:test:logout-sidebar-link
+${MENU_BUTTON}                  class:bm-burger-button
+${LOGOUT_BUTTON}                data:test:logout-sidebar-link
 
 
 *** Test Cases ***
@@ -44,13 +44,13 @@ I am on the login page
     Maximize Browser Window
 
 I log in with "${username}" and "${password}"
-    Input Text        ${LOGIN_USERNAME_SELECTOR}    ${username}
-    Input Password    ${LOGIN_PASSWORD_SELECTOR}    ${password}
-    Click Element     ${LOGIN_BUTTON_SELECTOR}
+    Input Text        ${LOGIN_USERNAME_FIELD}    ${username}
+    Input Password    ${LOGIN_PASSWORD_FIELD}    ${password}
+    Click Element     ${LOGIN_BUTTON}
 
 I should see the Products page
-    Element Should Be Visible        ${PRODUCTS_TITLE_SELECTOR}
-    ${title_text}=    Get Text       ${PRODUCTS_TITLE_SELECTOR}
+    Element Should Be Visible        ${PRODUCTS_TITLE}
+    ${title_text}=    Get Text       ${PRODUCTS_TITLE}
     Should Be Equal As Strings       ${title_text}    Products
 
 I add the product "${product_name}" to the cart
@@ -58,19 +58,19 @@ I add the product "${product_name}" to the cart
     Click Element    ${add_to_cart_selector}
 
 I proceed to checkout
-    Click Element    ${CART_ICON_SELECTOR} 
-    Click Element    ${CHECKOUT_BUTTON_SELECTOR}
+    Click Element    ${CART_ICON} 
+    Click Element    ${CHECKOUT_BUTTON}
 
 I fill in my information with "${first_name}", "${last_name}", and "${postal_code}"
-    Input Text    ${FIRST_NAME_SELECTOR}    ${first_name}
-    Input Text    ${LAST_NAME_SELECTOR}     ${last_name}
-    Input Text    ${POSTAL_CODE_SELECTOR}   ${postal_code}
+    Input Text    ${FIRST_NAME_FIELD}    ${first_name}
+    Input Text    ${LAST_NAME_FIELD}     ${last_name}
+    Input Text    ${POSTAL_CODE_FIELD}   ${postal_code}
 
 I continue to checkout
-    Click Element    ${CONTINUE_BUTTON_SELECTOR}
+    Click Element    ${CONTINUE_BUTTON}
 
 I finish the checkout process
-    Click Element    ${FINISH_BUTTON_SELECTOR}
+    Click Element    ${FINISH_BUTTON}
 
 I should see a success message for the order
     Element Should Be Visible         ${ORDER_COMPLETE_HEADER}
@@ -83,8 +83,8 @@ I should see a success message for the order
 
 I log out of the application
     Click Element                    ${BACK_TO_PRODUCTS_BUTTON}
-    Click Element                    ${MENU_BUTTON_SELECTOR}
-    Wait Until Element Is Visible    ${LOGOUT_BUTTON_SELECTOR}    5s
-    Click Element                    ${LOGOUT_BUTTON_SELECTOR}
-    Element Should Be Visible        ${LOGIN_BUTTON_SELECTOR}
+    Click Element                    ${MENU_BUTTON}
+    Wait Until Element Is Visible    ${LOGOUT_BUTTON}    5s
+    Click Element                    ${LOGOUT_BUTTON}
+    Element Should Be Visible        ${LOGIN_BUTTON}
     Close Browser

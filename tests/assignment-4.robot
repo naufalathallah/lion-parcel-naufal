@@ -2,8 +2,8 @@
 Library           AppiumLibrary
 Resource          ../resources/common.robot
 
-Suite Setup       Given Open And Login To App
-Test Teardown     When Back To Home
+Suite Setup       Open And Login To App
+Test Teardown     Back To Home
 
 
 *** Variables ***
