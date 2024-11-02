@@ -40,12 +40,12 @@ I have the user ID "${id}"
 I send a request to get single user
     Log    Sending request to get user with ID "${USER_ID}"
     ${response}=    GET    ${BASE_URL}/users/${USER_ID}
-    Set Test Variable    ${STATUS_CODE}    ${response.status_code}
-    Set Test Variable    ${RESPONSE_JSON}    ${response.json()}
+    Set Test Variable      ${STATUS_CODE}      ${response.status_code}
+    Set Test Variable      ${RESPONSE_JSON}    ${response.json()}
 
 I should receive a "${expected_status}" status code
     Log    Verifying status code is ${expected_status}
-    ${expected_status}=    Convert To Integer    ${expected_status}
+    ${expected_status}=    Convert To Integer       ${expected_status}
     Should Be Equal As Numbers    ${STATUS_CODE}    ${expected_status}
 
 The user details should match the schema
@@ -62,8 +62,8 @@ I send a request to create a new user
     Log    Sending request to create user with name "${USER_NAME}" and job "${USER_JOB}"
     ${data}=    Create Dictionary    name=${USER_NAME}    job=${USER_JOB}
     ${response}=    POST    ${CREATE_USER_ENDPOINT}    json=${data}
-    Set Test Variable    ${STATUS_CODE}    ${response.status_code}
-    Set Test Variable    ${RESPONSE_JSON}    ${response.json()}
+    Set Test Variable       ${STATUS_CODE}      ${response.status_code}
+    Set Test Variable       ${RESPONSE_JSON}    ${response.json()}
 
 The created user details should match the schema
     Log    ${JSON_SCHEMA_CREATE_USER}
