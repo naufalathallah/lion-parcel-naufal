@@ -136,10 +136,12 @@ I should see the total biaya for each instance
     END
 
 I input the invalid origin address as "${origin}"
+    Wait Until Element Is Visible    ${ORIGIN_ADDRESS_FIELD}
     Click Element                    ${ORIGIN_ADDRESS_FIELD}
     Input Text                       ${ROUTE_SEARCH_FIELD}    ${origin}
 
 I input the invalid destination address as "${destination}"
+    Wait Until Element Is Visible    ${DESTINATION_ADDRESS_FIELD}
     Click Element                    ${DESTINATION_ADDRESS_FIELD}
     Input Text                       ${ROUTE_SEARCH_FIELD}    ${destination}
 
