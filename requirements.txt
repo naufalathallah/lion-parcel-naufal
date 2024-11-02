@@ -1,5 +1,5 @@
 robotframework
 jsonschema
 requests
-robotframework-seleniumlibrary
+selenium
 robotframework-appiumlibrary
