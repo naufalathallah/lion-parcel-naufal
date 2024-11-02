@@ -54,8 +54,8 @@ I should see the Products page
     Should Be Equal As Strings       ${title_text}    Products
 
 I add the product "${product_name}" to the cart
-    ${ADD_TO_CART_SELECTOR}=    Set Variable    data:test:add-to-cart-${product_name}
-    Click Element    ${ADD_TO_CART_SELECTOR}
+    ${add_to_cart_selector}=    Set Variable    data:test:add-to-cart-${product_name}
+    Click Element    ${add_to_cart_selector}
 
 I proceed to checkout
     Click Element    ${CART_ICON_SELECTOR} 
