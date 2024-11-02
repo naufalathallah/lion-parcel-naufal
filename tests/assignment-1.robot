@@ -7,8 +7,10 @@ Library           JSONSchemaLibrary    schema_location=${CURDIR}/../schemas
 ${BASE_URL}                     https://reqres.in/api
 ${SINGLE_USER_ENDPOINT}         ${BASE_URL}/users/2
 ${CREATE_USER_ENDPOINT}         ${BASE_URL}/users
+
 ${JSON_SCHEMA_SINGLE_USER}      single-user.json
 ${JSON_SCHEMA_CREATE_USER}      create-user.json
+
 ${user_id}                      ${EMPTY}
 ${status_code}                  ${EMPTY}
 ${response_json}                ${EMPTY}
@@ -20,13 +22,13 @@ ${user_job}                     ${EMPTY}
 Get Single User
     Given I have the user ID "2"
     When I send a request to get single user
-    Then I should receive a 200 status code
+    Then I should receive a "200" status code
     And the user details should match the schema
 
 Create New User
     Given I have the user details "morpheus" and "leader"
     When I send a request to create a new user
-    Then I should receive a 201 status code
+    Then I should receive a "201" status code
     And the created user details should match the schema
 
 
@@ -41,9 +43,10 @@ I send a request to get single user
     Set Test Variable    ${status_code}    ${response.status_code}
     Set Test Variable    ${response_json}    ${response.json()}
 
-I should receive a 200 status code
-    Log    Verifying status code is 200
-    Should Be Equal As Numbers    ${status_code}    200
+I should receive a "${expected_status}" status code
+    Log    Verifying status code is ${expected_status}
+    ${expected_status}=    Convert To Integer    ${expected_status}
+    Should Be Equal As Numbers    ${status_code}    ${expected_status}
 
 The user details should match the schema
     Log    ${JSON_SCHEMA_SINGLE_USER}
@@ -61,10 +64,6 @@ I send a request to create a new user
     ${response}=    POST    ${CREATE_USER_ENDPOINT}    json=${data}
     Set Test Variable    ${status_code}    ${response.status_code}
     Set Test Variable    ${response_json}    ${response.json()}
-
-I should receive a 201 status code
-    Log    Verifying status code is 201
-    Should Be Equal As Numbers    ${status_code}    201
 
 The created user details should match the schema
     Log    ${JSON_SCHEMA_CREATE_USER}
