@@ -26,7 +26,7 @@ ${LOGOUT_BUTTON_SELECTOR}       data:test:logout-sidebar-link
 
 
 *** Test Cases ***
-User Can Successfully Purchase a Product
+As a User, I Can Successfully Purchase a Product
     Given I am on the login page
     When I log in with "standard_user" and "secret_sauce"
     Then I should see the Products page

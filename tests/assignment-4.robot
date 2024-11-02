@@ -19,7 +19,7 @@ ${BTN_ADD_Detail}               id=com.lionparcel.services.consumer:id/btnAddDet
 
 
 *** Test Cases ***
- As a user, I can check the tarif
+ As a User, I Can Check The Tarif
     Given I have opened the Cek Tarif menu
     When I input the origin address as "Cibinong, Bogor"
     And I input the destination address as "Pancoran"
