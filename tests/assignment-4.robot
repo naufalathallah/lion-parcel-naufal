@@ -1,38 +1,15 @@
 *** Settings ***
-Library    AppiumLibrary
+Library            AppiumLibrary
 
+Resource           ../resources/common.robot
 
+Suite Setup        Open And Login To App
 
 *** Variables ***
-${REMOTE_URL}         http://localhost:4723
-${PLATFORM_NAME}      Android
-${PLATFORM_VERSION}   13
-${DEVICE_NAME}        M2101K7BNY
-${AUTOMATION_NAME}    UIAutomator2
-${APP_PACKAGE}        com.lionparcel.services.consumer
-${APP_ACTIVITY}       .view.main.MainActivity
-${AUTO_GRANT_PERMISSIONS}   true
 
-${SCREEN_WIDTH}    1080  
-${SCREEN_HEIGHT}   1920 
 
 
 *** Test Cases ***
-open app
-    Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    platformVersion=${PLATFORM_VERSION}    deviceName=${DEVICE_NAME}    automationName=${AUTOMATION_NAME}    appPackage=${APP_PACKAGE}    appActivity=${APP_ACTIVITY}    autoGrantPermissions=${AUTO_GRANT_PERMISSIONS}
-    Click Element    id=com.lionparcel.services.consumer:id/btnAgree
-    Terminate Application    ${APP_PACKAGE}
-    Activate Application    ${APP_PACKAGE}
-    Wait Until Element Is Visible     id=com.lionparcel.services.consumer:id/txtSkip    10s
-    Click Element    id=com.lionparcel.services.consumer:id/txtSkip
-
-    Wait Until Element Is Visible    id=com.lionparcel.services.consumer:id/ivClose    5s
-    Click Element    id=com.lionparcel.services.consumer:id/ivClose
-   
-    Sleep    20s    reason=cannot interact with elements
-    
-    Click Element    id=com.lionparcel.services.consumer:id/ivClose
-    
 skenarionya
     Click Element    android=UiSelector().text("Cek Tarif")
     Click Element    id=com.lionparcel.services.consumer:id/edtOriginAddress
