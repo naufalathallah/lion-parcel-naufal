@@ -2,7 +2,7 @@
 Library           AppiumLibrary
 Resource          ../resources/common.robot
 
-Suite Setup       Open And Login To App
+Suite Setup       Setup
 Test Teardown     Back To Home
 
 
