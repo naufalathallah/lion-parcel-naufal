@@ -150,7 +150,7 @@ I should see location not found message
 
 I open the delivery form from the banner
     Click Element            ${BANNER_PROMO}
-    Wait Until Page Does Not Contain Element    ${LOADING_TITLE}
+    Wait Until Page Does Not Contain Element    ${LOADING_TITLE}    10s
     Wait Until Element Is Visible    ${IV_CLOSE}    10s
     Click Element            ${IV_CLOSE}
 
