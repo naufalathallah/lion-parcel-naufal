@@ -89,10 +89,10 @@ robot tests/assignment-4.robot
 Watch the video of the test execution [here](https://drive.google.com/file/d/1CRlqHjAV2oUGVHS3dnD5If7Zm2i4KzRp/view?usp=sharing).
 
 ### Screenshot Result
-![Assignment 4 Screenshot](assignment-4-result.jpeg)
+![Assignment 4 Screenshot](assignment-4-result.jpg)
 
 ### Screenshot Log
-![Assignment 4 Screenshot](assignment-4-log.jpeg)
+![Assignment 4 Screenshot](assignment-4-log.jpg)
 
 ### FYI
 
