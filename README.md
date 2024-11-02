@@ -86,7 +86,7 @@ robot tests/assignment-4.robot
 ```
 
 ### Video Demonstration
-Watch the video of the test execution [here](https://drive.google.com/file/d/12bgjl445EdpYt-bGmQpHCLKVZ8PkIttN/view?usp=sharing).
+Watch the video of the test execution [here](https://drive.google.com/file/d/1CRlqHjAV2oUGVHS3dnD5If7Zm2i4KzRp/view?usp=sharing).
 
 ### Screenshot Result
 ![Assignment 4 Screenshot](assignment-4-result.jpeg)
@@ -95,7 +95,5 @@ Watch the video of the test execution [here](https://drive.google.com/file/d/12b
 ![Assignment 4 Screenshot](assignment-4-log.jpeg)
 
 ### FYI
-
-- **Popup Banner Interaction Issue**: There is a condition in the script where a `Sleep    20s    reason=cannot interact with elements` line is used due to difficulty interacting with a popup banner. Attempts to close the popup using the close button, tapping on the right side of the screen, and using the device's back button were unsuccessful. The `Sleep` command is applied as a temporary workaround to allow the banner to disappear.
 
 - **Coachmark Delay Issue**: Another challenge observed was with the delay in closing the coachmark. This issue has been encountered before, where Appium's logs indicate prolonged time in locating and clicking the coachmark element. This delay appears to be due to the interactive package used for the coachmark, causing slower response times in interactions.
