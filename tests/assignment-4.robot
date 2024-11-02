@@ -30,7 +30,7 @@ ${DROP_PACKET_BUTTON}                 id=com.lionparcel.services.consumer:id/btn
     When I input the origin address as "Cibinong, Bogor"
     And I input the destination address as "Pancoran"
     And I submit the request to check the tarif
-    Then I should see the total biaya for each instance    @{EXPECTED_TARIFS}
+    Then I should see the total biaya for each instance
 
 As a User, I Can See Location Not Found When Entering an Origin Invalid Address
     Given I have opened the Cek Tarif menu
@@ -127,7 +127,6 @@ I submit the request to check the tarif
     Wait Until Page Contains Element         ${BTN_ADD_Detail} 
 
 I should see the total biaya for each instance
-    [Arguments]    @{EXPECTED_TARIFS}
     Element Should Be Visible    ${SCROLL_TO_REQUEST_PICKUP}
     FOR    ${index}    IN RANGE    0    7
         Click Element            android=UiSelector().resourceId("com.lionparcel.services.consumer:id/ivTariffBackGround").instance(${index})
