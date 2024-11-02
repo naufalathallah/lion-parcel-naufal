@@ -46,3 +46,7 @@ Back To Home
 
 I get back
     Click Element    ${BTN_BACK}
+
+I close the popup
+    Click Element    ${IV_CLOSE}
+    
