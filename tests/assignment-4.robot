@@ -28,7 +28,7 @@ ${DROP_PACKET_BUTTON}                 id=com.lionparcel.services.consumer:id/btn
  As a User, I Can Check The Tarif
     Given I have opened the Cek Tarif menu
     When I input the origin address as "Cibinong, Bogor"
-    And I input the destination address as "Pancoran"
+    And I input the destination address as "Pancoran" in "Jakarta Selatan"
     And I submit the request to check the tarif
     Then I should see the total biaya for each instance
 
@@ -115,11 +115,11 @@ I input the origin address as "${origin}"
     Wait Until Element Is Visible    xpath=//android.widget.TextView[contains(@text, '${origin}')]
     Click Element                    xpath=//android.widget.TextView[contains(@text, '${origin}')]
 
-I input the destination address as "${destination}"
+I input the destination address as "${destination}" in "${destination_city}"
     Click Element                    ${DESTINATION_ADDRESS_FIELD}
     Input Text                       ${ROUTE_SEARCH_FIELD}    ${destination}
-    Wait Until Element Is Visible    xpath=//android.widget.TextView[contains(@text, '${destination}')]/following-sibling::android.widget.TextView[contains(@text, "Jakarta Selatan")]
-    Click Element                    xpath=//android.widget.TextView[contains(@text, '${destination}')]/following-sibling::android.widget.TextView[contains(@text, "Jakarta Selatan")]
+    Wait Until Element Is Visible    xpath=//android.widget.TextView[contains(@text, '${destination}')]/following-sibling::android.widget.TextView[contains(@text, "${destination_city}")]
+    Click Element                    xpath=//android.widget.TextView[contains(@text, '${destination}')]/following-sibling::android.widget.TextView[contains(@text, "${destination_city}")]
 
 I submit the request to check the tarif
     Wait Until Element Is Visible            ${CHECK_TARIFF_BUTTON}    5s
