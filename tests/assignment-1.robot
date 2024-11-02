@@ -2,6 +2,7 @@
 Library           RequestsLibrary
 Library           JSONSchemaLibrary    schema_location=${CURDIR}/../schemas
 
+
 *** Variables ***
 ${BASE_URL}       https://reqres.in/api
 ${SINGLE_USER_ENDPOINT}    ${BASE_URL}/users/2
@@ -29,6 +30,7 @@ Create New User
     When I send a request to create a new user
     Then I should receive a 201 status code
     And the created user details should match the schema
+
 
 *** Keywords ***
 I have the user ID "${id}"
