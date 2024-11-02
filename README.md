@@ -36,3 +36,33 @@ robot tests/assignment-2.robot
 Create Test Plan & Test Case for journey as a buyer:
 [Google Sheets Test Plan](https://docs.google.com/spreadsheets/d/11UpwLe6yNgsfwj9JxhTDh7wP8PRnRUei/edit?usp=sharing&ouid=118163462700119744611&rtpof=true&sd=true)
 
+## Assignment 3: Sorting Even and Odd Numbers in Descending Order
+
+This JavaScript function sorts an array of integers by separating even and odd numbers, sorting each group in descending order, and then combining them with even numbers first. 
+
+### Code
+```javascript
+function sortEvenOddDesc(arr) {
+    // Separate even and odd numbers
+    const evens = arr.filter(num => num % 2 === 0).sort((a, b) => b - a);
+    const odds = arr.filter(num => num % 2 !== 0).sort((a, b) => b - a);
+
+    // Combine
+    return [...evens, ...odds];
+}
+
+const inputArray = [3, 2, 5, 1, 8, 9, 6];
+const sortedArray = sortEvenOddDesc(inputArray);
+
+console.log("Input:", inputArray);
+console.log("Output:", sortedArray);
+```
+
+### Output Screenshot
+![Assignment 3 Result](assignment-3-result.jpeg)
+
+### Run the Code
+
+```bash
+node tests/assignment-3.js
+```
