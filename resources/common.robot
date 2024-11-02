@@ -1,6 +1,7 @@
 *** Settings ***
 Library    AppiumLibrary
 
+
 *** Variables ***
 ${REMOTE_URL}                     http://localhost:4723
 ${PLATFORM_NAME}                  Android
@@ -14,6 +15,7 @@ ${AUTO_GRANT_PERMISSIONS}         true
 ${BTN_AGREE}                      id=com.lionparcel.services.consumer:id/btnAgree
 ${TXT_SKIP}                       id=com.lionparcel.services.consumer:id/txtSkip
 ${IV_CLOSE}                       id=com.lionparcel.services.consumer:id/ivClose
+${BTN_BACK}                       accessibility_id=Navigate up
 
 
 *** Keywords ***
@@ -23,7 +25,7 @@ Open And Login To App
 
     Terminate Application            ${APP_PACKAGE}
     Activate Application             ${APP_PACKAGE}
-    
+
     Wait Until Element Is Visible    ${TXT_SKIP}    10s
     Click Element                    ${TXT_SKIP}
 
@@ -32,3 +34,11 @@ Open And Login To App
 
     Sleep    20s    reason=cannot interact with elements
     Click Element                    ${IV_CLOSE}
+
+Back To Home
+    ${is_visible}=    Set Variable    True
+    WHILE    ${is_visible}
+        Click Element     ${BTN_BACK}
+        Sleep             1s
+        ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${BTN_BACK}
+    END
