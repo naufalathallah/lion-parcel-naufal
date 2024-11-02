@@ -16,10 +16,11 @@ ${BTN_AGREE}                      id=com.lionparcel.services.consumer:id/btnAgre
 ${TXT_SKIP}                       id=com.lionparcel.services.consumer:id/txtSkip
 ${IV_CLOSE}                       id=com.lionparcel.services.consumer:id/ivClose
 ${BTN_BACK}                       accessibility_id=Navigate up
-
+${LOADING_TITLE}                  id=com.lionparcel.services.consumer:id/text_loading_title
 
 *** Keywords ***
 Open And Login To App
+    Log To Console    Login To App
     Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    platformVersion=${PLATFORM_VERSION}    deviceName=${DEVICE_NAME}    automationName=${AUTOMATION_NAME}    appPackage=${APP_PACKAGE}    appActivity=${APP_ACTIVITY}    autoGrantPermissions=${AUTO_GRANT_PERMISSIONS}
     Click Element                    ${BTN_AGREE}
 
@@ -42,3 +43,6 @@ Back To Home
         Sleep             1s
         ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${BTN_BACK}
     END
+
+I get back
+    Click Element    ${BTN_BACK}

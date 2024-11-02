@@ -15,6 +15,8 @@ ${CHECK_TARIFF_BUTTON}          id=com.lionparcel.services.consumer:id/btnCheckT
 ${REQUEST_PICKUP_TEXT}          android=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Request Pick Up"))
 ${TOTAL_BIAYA_LABEL}            //android.widget.TextView[@text="Total Biaya :"]/following-sibling::android.widget.TextView
 ${BTN_ADD_Detail}               id=com.lionparcel.services.consumer:id/btnAddDetail
+${BANNER_PROMO}                 id=com.lionparcel.services.consumer:id/ivBannerPromo
+${BACK_BUTTON_ROUND}            id=com.lionparcel.services.consumer:id/llBackButton
 
 @{EXPECTED_TARIFS}              Rp7.500    Rp78.000    Rp5.626    Rp5.250    Rp30.000    Rp400.000    Rp535.000
 
@@ -36,6 +38,18 @@ As a User, I Can See Location Not Found When Entering an Destination Invalid Add
     Given I have opened the Cek Tarif menu
     When I input the invalid destination address as "@#!@$56🤣"
     Then I should see location not found message
+
+As a User, I Can Access the Delivery Form from the Banner
+    Given I have opened the Cek Tarif menu
+    When I open the delivery form from the banner
+    Then I should see the delivery form
+    And I return from the form
+
+As a User, I Cannot Check the Tarif if the Destination is Empty
+    Given I have opened the Cek Tarif menu
+    When I input the invalid destination address as ""
+    And I get back
+    Then I should see the check tarif button is disabled
     
 
 *** Keywords ***
@@ -79,3 +93,18 @@ I input the invalid destination address as "${destination}"
 
 I should see location not found message
     Text Should Be Visible            Lokasi tidak ditemukan
+
+I open the delivery form from the banner
+    Click Element            ${BANNER_PROMO}
+    Wait Until Page Does Not Contain Element    ${LOADING_TITLE}
+    Wait Until Element Is Visible    ${IV_CLOSE}    5s
+    Click Element            ${IV_CLOSE}
+
+I should see the delivery form
+    Text Should Be Visible            Dimana Lokasi Pengirim?
+
+I return from the form
+    Click Element            ${BACK_BUTTON_ROUND}
+    
+I should see the check tarif button is disabled
+    Element Should Be Disabled       ${CHECK_TARIFF_BUTTON}
