@@ -2,7 +2,8 @@
 Library           AppiumLibrary
 Resource          ../resources/common.robot
 
-Suite Setup       Open And Login To App
+Suite Setup       Given Open And Login To App
+Test Teardown     When Back To Home
 
 
 *** Variables ***
@@ -26,6 +27,16 @@ ${BTN_ADD_Detail}               id=com.lionparcel.services.consumer:id/btnAddDet
     And I submit the request to check the tarif
     Then I should see the total biaya for each instance    @{EXPECTED_TARIFS}
 
+As a User, I Can See Location Not Found When Entering an Origin Invalid Address
+    Given I have opened the Cek Tarif menu
+    When I input the invalid origin address as "@#!@$56🤣"
+    Then I should see location not found message
+
+As a User, I Can See Location Not Found When Entering an Destination Invalid Address
+    Given I have opened the Cek Tarif menu
+    When I input the invalid destination address as "@#!@$56🤣"
+    Then I should see location not found message
+    
 
 *** Keywords ***
 I have opened the Cek Tarif menu
@@ -57,3 +68,14 @@ I should see the total biaya for each instance
         Should Be Equal          ${total_biaya}      ${EXPECTED_TARIFS}[${index}]
         Log                      Total Biaya: ${total_biaya}, Expected: ${EXPECTED_TARIFS}[${index}]
     END
+
+I input the invalid origin address as "${origin}"
+    Click Element                    ${ORIGIN_ADDRESS_FIELD}
+    Input Text                       ${ROUTE_SEARCH_FIELD}    ${origin}
+
+I input the invalid destination address as "${destination}"
+    Click Element                    ${DESTINATION_ADDRESS_FIELD}
+    Input Text                       ${ROUTE_SEARCH_FIELD}    ${destination}
+
+I should see location not found message
+    Text Should Be Visible            Lokasi tidak ditemukan
